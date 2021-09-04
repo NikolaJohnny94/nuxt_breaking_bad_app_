@@ -26,8 +26,7 @@ export default {
     linkExactActiveClass: 'exact-active-link',
   },
 
-  plugins: [
-  ],
+  plugins: [],
 
   components: true,
 
@@ -50,14 +49,15 @@ export default {
       baseURL: 'https://www.breakingbadapi.com/api/'
     }
   },
+
   modules: [
     'bootstrap-vue/nuxt',
     ['@nuxtjs/axios']
   ],
+
   generate: {
     fallback: true
   },
-  build: {
-    
-  }
+
+  build: {}
 }
