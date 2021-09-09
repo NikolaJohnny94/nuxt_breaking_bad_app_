@@ -1,7 +1,7 @@
 <template>
   <b-nav tabs justified class="bg-dark">
-    <nuxt-link to="/">Breaking Bad</nuxt-link>
-    <nuxt-link id="bcs" to="/better_call_saul">Better Call Saul</nuxt-link>
+    <nuxt-link id="breaking-bad" to="/">Breaking Bad</nuxt-link>
+    <nuxt-link id="better-call-saul" to="/better_call_saul">Better Call Saul</nuxt-link>
   </b-nav>
 </template>
 
@@ -21,8 +21,13 @@ a {
   text-decoration: none;
 }
 
-a.exact-active-link {
+#breaking-bad.exact-active-link {
   color: #369457 !important;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+}
+
+#better-call-saul.exact-active-link {
+  color: rgb(242, 238, 12) !important;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
 

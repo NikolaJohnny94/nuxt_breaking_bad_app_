@@ -9,6 +9,12 @@
       <p>Loading...</p>
       <b-spinner type="grow"></b-spinner>
     </b-row>
+    <b-form-input
+      class="w-25 mx-auto mt-5 border-secondary"
+      type="text"
+      :placeholder="inputPlaceholder"
+      v-model="search"
+    ></b-form-input>
     <b-row align-h="center">
       <b-col
         v-if="item.name !== 'Holly White'"
@@ -65,12 +71,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       perPage: 12,
       currentPage: 1,
+      search: "",
+      inputPlaceholder: "Search through characters",
     };
   },
   head: {
@@ -96,28 +104,53 @@ export default {
   },
   computed: {
     ...mapGetters({
-      data: 'getDataBCS',
+      data: "getDataBCS",
     }),
     items() {
-      return this.data.length;
+      return this.data.filter(searchedName => searchedName.name.toLowerCase().match(this.search.toLowerCase())).length
     },
     itemsPerPage() {
-      return this.data.slice(
-        (this.currentPage - 1) * this.perPage,
-        this.currentPage * this.perPage
-      );
+      return this.data
+        .filter(searchedName => searchedName.name.toLowerCase().match(this.search.toLowerCase()))
+        .slice(
+          (this.currentPage - 1) * this.perPage,
+          this.currentPage * this.perPage
+        );
     },
   },
   mounted() {
-    this.$store.dispatch('fetchDataBCS')
+    this.$store.dispatch("fetchDataBCS");
   },
-}
+};
 </script>
 
 <style scoped>
+
 h2 {
   margin-top: 6%;
   margin-bottom: 8%;
+}
+
+input {
+  text-align: center;
+  border-radius: unset;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+input:focus {
+  border-color: yellow !important;
+  box-shadow: inset 0 -1px rgba(242, 238, 12, 0.5),
+    inset 0 -2px rgba(250, 214, 55, 0.5);
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input::placeholder {
+  text-align: center;
 }
 
 img {
