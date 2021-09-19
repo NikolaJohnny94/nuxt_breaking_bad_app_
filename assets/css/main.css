@@ -1,41 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap");
 
 * {
-    -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
-html,body {
-    overflow-x: hidden;
+html,
+body {
+  overflow-x: hidden;
 }
 
 body {
-    user-select: none;
-    font-family: 'Source Code Pro', monospace;
+  user-select: none;
+  font-family: "Source Code Pro", monospace;
 }
 
 .page-item.active .page-link {
-    color: #fff;
-    background-color: #369457 !important;
-    border-color: #369457 !important;
+  color: #fff;
+  background-color: #369457 !important;
+  border-color: #369457 !important;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
 
 #pagination-row-bcs .page-item.active .page-link {
-    color: #fff;
-    background-color: #fad637 !important;
-    border-color: #fad637 !important;
+  color: #fff;
+  background-color: #ffe882 !important;
+  border-color: #ffe882 !important;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
 
 #pagination-row-bcs .page-item .page-link {
-    font-weight: bold;
-    background-color: #505e66 !important;
-    color: #ffe882 ;
+  font-weight: bold;
+  background-color: #505e66 !important;
+  color: #ffe882;
 }
 
 .page-link:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .page-item .page-link {
-    font-weight: bold;
-    background-color: #343a40 !important;
-    color: #369457;
+  font-weight: bold;
+  background-color: #343a40 !important;
+  color: #369457;
 }

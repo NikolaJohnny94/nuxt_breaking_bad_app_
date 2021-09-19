@@ -1,7 +1,9 @@
 <template>
   <b-nav tabs justified class="bg-dark">
     <nuxt-link id="breaking-bad" to="/">Breaking Bad</nuxt-link>
-    <nuxt-link id="better-call-saul" to="/better_call_saul">Better Call Saul</nuxt-link>
+    <nuxt-link id="better-call-saul" to="/better_call_saul"
+      >Better Call Saul</nuxt-link
+    >
   </b-nav>
 </template>
 
@@ -27,7 +29,7 @@ a {
 }
 
 #better-call-saul.exact-active-link {
-  color: rgb(242, 238, 12) !important;
+  color: #ffe882 !important;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
 

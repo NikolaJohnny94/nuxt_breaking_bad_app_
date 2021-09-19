@@ -10,7 +10,8 @@
       <b-spinner type="grow"></b-spinner>
     </b-row>
     <b-form-input
-      class="w-25 mx-auto mt-5 border-secondary"
+      id="inputBB"
+      class="mx-auto mt-5 border-secondary"
       type="text"
       :placeholder="inputPlaceholder"
       v-model="search"
@@ -83,11 +84,15 @@ export default {
       data: "getData",
     }),
     items() {
-      return this.data.filter(searchedName => searchedName.name.toLowerCase().match(this.search.toLowerCase())).length
+      return this.data.filter((searchedName) =>
+        searchedName.name.toLowerCase().match(this.search.toLowerCase())
+      ).length;
     },
     itemsPerPage() {
       return this.data
-        .filter(searchedName => searchedName.name.toLowerCase().match(this.search.toLowerCase()))
+        .filter((searchedName) =>
+          searchedName.name.toLowerCase().match(this.search.toLowerCase())
+        )
         .slice(
           (this.currentPage - 1) * this.perPage,
           this.currentPage * this.perPage
@@ -101,21 +106,31 @@ export default {
 </script>
 
 <style scoped>
-
 h2 {
   margin-top: 6%;
   margin-bottom: 8%;
 }
 
+#inputBB {
+  width: 35%;
+}
+
 input {
+  color: rgb(54, 148, 87);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
   text-align: center;
   border-radius: unset;
   border-top: none;
   border-right: none;
   border-left: none;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 input:focus {
+  color: rgb(54, 148, 87);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+  font-style: italic;
   border-color: #369457 !important;
   box-shadow: inset 0 -1px rgba(13, 62, 16, 0.5),
     inset 0 -2px rgba(31, 96, 50, 0.5);
@@ -123,10 +138,12 @@ input:focus {
 
 input:focus::placeholder {
   color: transparent;
+  text-shadow: none;
 }
 
 input::placeholder {
   text-align: center;
+  text-shadow: none;
 }
 
 img {
@@ -228,10 +245,12 @@ h2 {
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
-
   .col-3,
   .flip-card {
     min-width: 35% !important;
+  }
+  #inputBB {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
   }
 }
 
@@ -239,6 +258,9 @@ h2 {
   .col-3,
   .flip-card {
     min-width: 30% !important;
+  }
+  #inputBB {
+    width: 45% !important;
   }
 }
 
@@ -249,6 +271,31 @@ h2 {
   .col-3,
   .flip-card {
     min-width: 75% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #inputBB {
+    width: 75% !important;
+  }
+  #inputBB::placeholder {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 993px) {
+  #inputBB {
+    width: 70% !important;
+  }
+}
+@media (max-width: 420px) {
+  #inputBB::placeholder {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 320px) {
+  #inputBB::placeholder {
+    font-size: 10px !important;
   }
 }
 </style>
