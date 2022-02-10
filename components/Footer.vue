@@ -1,40 +1,34 @@
 <template>
   <footer>
     <p class="footerText">
+      <a v-for="(url,idx) in urls.slice(0,2)" :href="url.url" :target="target" :title="titles[idx]" :key="url.id"
+        ><fa :icon="['fab', icons[idx]]" class="fa-lg social-media-icon"
+      /></a>
       <span>{{ footerText }}</span>
-      <a :href="urls[0]" :target="target" :title="titles[0]"
-        ><fa :icon="['fab', icons[0]]" class="fa-lg social-media-icon"
-      /></a>
-      <a :href="urls[1]" :target="target" :title="titles[1]"
-        ><fa :icon="['fab', icons[1]]" class="fa-lg social-media-icon"
-      /></a>
-      <a :href="urls[2]" :target="target" :title="titles[2]"
-        ><fa :icon="['fab', icons[2]]" class="fa-lg social-media-icon"
-      /></a>
-      <a :href="urls[3]" :target="target" :title="titles[3]"
-        ><fa :icon="['fab', icons[3]]" class="fa-lg social-media-icon"
+     <a v-for="(url,idx) in urls.slice(2,4)" :href="url.url" :target="target" :title="titles[idx+2]" :key="url.id"
+        ><fa :icon="['fab', icons[idx+2]]" class="fa-lg social-media-icon"
       /></a>
     </p>
   </footer>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-export default {
-  data() {
-    return {
-      footerText: 'Developed by Nikola',
-      target: '_blank',
-    };
-  },
-  computed: {
-    ...mapGetters({
-      urls: 'getURLS',
-      icons: 'getIcons',
-      titles: 'getTitles',
-    }),
-  },
-}
+  import { mapGetters } from "vuex";
+  export default {
+    data() {
+      return {
+        footerText: "Developed by Nikola",
+        target: "_blank",
+      };
+    },
+    computed: {
+      ...mapGetters({
+        urls: "getURLS",
+        icons: "getIcons",
+        titles: "getTitles",
+      }),
+    },
+  };
 </script>
 
 <style scoped>
@@ -63,7 +57,7 @@ footer {
 }
 
 .social-media-icon {
-  margin-right: 5px !important;
+  margin: auto 5px;
 }
 
 .social-media-icon:active {

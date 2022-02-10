@@ -1,11 +1,6 @@
 <template>
   <div id="data_list">
-    <b-row
-      id="loading-spinner-row"
-      align-h="center"
-      align-v="center"
-      v-if="data == ''"
-    >
+    <b-row id="loading-spinner-row" align-h="center" align-v="center" v-if="data == ''">
       <p>Loading...</p>
       <b-spinner type="grow"></b-spinner>
     </b-row>
@@ -34,13 +29,7 @@
               <p>Birthday: {{ item.birthday }}</p>
               <p>Occupation:</p>
               <ul>
-                <li
-                  v-for="ocupation in item.occupation"
-                  :key="ocupation"
-                  style=""
-                >
-                  {{ ocupation }}
-                </li>
+                <li v-for="ocupation in item.occupation" :key="ocupation" style>{{ ocupation }}</li>
               </ul>
               <p>Status: {{ item.status }}</p>
               <p>Portrayed by: {{ item.portrayed }}</p>
@@ -49,11 +38,14 @@
                 <span
                   v-for="(appearance, index) in item.appearance"
                   :key="appearance"
-                  >{{ appearance
-                  }}<span v-if="index + 1 < item.appearance.length"
-                    >,
-                  </span></span
                 >
+                  {{
+                    appearance
+                  }}
+                  <span
+                    v-if="index + 1 < item.appearance.length"
+                  >,</span>
+                </span>
               </p>
             </div>
           </div>
@@ -76,6 +68,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      data: [],
       perPage: 12,
       currentPage: 1,
       search: "",
@@ -104,9 +97,6 @@ export default {
     ],
   },
   computed: {
-    ...mapGetters({
-      data: "getDataBCS",
-    }),
     items() {
       return this.data.filter((searchedName) =>
         searchedName.name.toLowerCase().match(this.search.toLowerCase())
@@ -120,13 +110,15 @@ export default {
         .slice(
           (this.currentPage - 1) * this.perPage,
           this.currentPage * this.perPage
-        );
+        )
     },
   },
-  mounted() {
-    this.$store.dispatch("fetchDataBCS");
+  async fetch() {
+    const res = await this.$http.$get('/characters?category=Better+Call+Saul').then(res => {
+      this.data = res
+    })
   },
-};
+}
 </script>
 
 <style scoped>
