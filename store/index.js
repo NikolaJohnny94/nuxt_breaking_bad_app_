@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 export const state = () => ({
   payload: [],
   bcs_payload: [],
@@ -11,19 +10,19 @@ export const state = () => ({
   icons: ["github", "codepen", "linkedin-in", "twitter"],
   urls: [
     {
-      id: uuidv4(),
+      id: 1,
       url: "https://github.com/NikolaJohnny94",
     },
     {
-      id: uuidv4(),
+      id: 2,
       url: "https://codepen.io/NikolaJohnny/pens/public/",
     },
     {
-      id: uuidv4(),
+      id: 3,
       url: "https://www.linkedin.com/in/nikola-ivanovi%C4%87-2b6a13179/",
     },
     {
-      id: uuidv4(),
+      id: 4,
       url: "https://twitter.com/nikola8794pwd",
     },
   ],
